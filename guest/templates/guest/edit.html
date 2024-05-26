@@ -1,0 +1,88 @@
+{% extends 'guest/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* General styles for the form container */
+  .wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 5%;
+    background-color: #b82828;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .fields {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .fields label {
+    font-weight: bold;
+    margin-right: 10px;
+    flex-basis: 30%;
+  }
+
+  .fields input[type="text"],
+  .fields input[type="email"],
+  .fields input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    flex-grow: 1;
+  }
+
+  .fields input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .fields input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="wrap">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="fields">
+      <label for="first_name">First Name</label>
+      {{ form.first_name }}
+    </div>
+    <div class="fields">
+      <label for="last_name">Last Name</label>
+      {{ form.last_name }}
+    </div>
+    <div class="fields">
+      <label for="phone">Phone Number</label>
+      {{ form.phone }}
+    </div>
+    <div class="fields">
+      <label for="email">E-mail</label>
+      {{ form.email }}
+    </div>
+    <div class="fields">
+      <label for="city">City</label>
+      {{ form.city }}
+    </div>
+    <div class="fields">
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </div>
+  </form>
+</div>
+{% endblock content %}
+
+{% block more_links %}
+<a href="{% url 'cancel' res %}">Cancel Booking</a>
+<a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
